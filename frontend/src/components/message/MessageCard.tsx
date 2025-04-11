@@ -1,3 +1,5 @@
+'use client';
+
 import { Message } from '@/lib/api';
 import { useState } from 'react';
 

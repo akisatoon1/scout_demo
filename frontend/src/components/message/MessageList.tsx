@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { messages, Message } from '@/lib/api';
 import MessageCard from './MessageCard';
