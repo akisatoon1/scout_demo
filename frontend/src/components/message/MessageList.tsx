@@ -4,14 +4,20 @@ import { useEffect, useState } from 'react';
 import { messages, Message } from '@/lib/api';
 import MessageCard from './MessageCard';
 
-export default function MessageList() {
+interface MessageListProps {
+    type: 'sent' | 'received';
+}
+
+function MessageList({ type }: MessageListProps) {
     const [messageList, setMessageList] = useState<Message[]>([]);
     const [error, setError] = useState('');
 
     useEffect(() => {
         const fetchMessages = async () => {
             try {
-                const data = await messages.list();
+                const data = type === 'sent'
+                    ? await messages.list_sent()
+                    : await messages.list_received();
                 setMessageList(data.messages);
             } catch (err) {
                 setError('メッセージの取得に失敗しました');
@@ -19,7 +25,7 @@ export default function MessageList() {
         };
 
         fetchMessages();
-    }, []);
+    }, [type]);
 
     if (error) {
         return <div className="text-red-500">{error}</div>;
@@ -36,4 +42,7 @@ export default function MessageList() {
             ))}
         </div>
     );
-} 
+}
+
+export const SentMessageList = () => <MessageList type="sent" />;
+export const ReceivedMessageList = () => <MessageList type="received" />;

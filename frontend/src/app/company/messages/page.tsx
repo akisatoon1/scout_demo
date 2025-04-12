@@ -1,4 +1,4 @@
-import MessageList from '@/components/message/MessageList';
+import { SentMessageList } from '@/components/message/MessageList';
 
 export default function CompanyMessagesPage() {
     return (
@@ -7,7 +7,7 @@ export default function CompanyMessagesPage() {
                 <div className="max-w-3xl mx-auto">
                     <h1 className="text-3xl font-extrabold text-gray-900">企業メッセージ一覧</h1>
                     <div className="mt-6">
-                        <MessageList />
+                        <SentMessageList />
                     </div>
                 </div>
             </div>
