@@ -28,6 +28,12 @@ export interface CompanyProfile {
     description: string;
 }
 
+export interface Intern {
+    id: number;
+    name: string;
+    profile: InternProfile;
+}
+
 export interface Message {
     id: number;
     content: string;
@@ -89,4 +95,11 @@ export const messages = {
         const response = await api.post<Message>('/messages', { message: data });
         return response.data;
     },
-}; 
+};
+
+export const interns = {
+    list: async () => {
+        const response = await api.get<{ interns: Intern[] }>('/interns');
+        return response.data;
+    },
+};
