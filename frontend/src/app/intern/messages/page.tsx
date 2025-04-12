@@ -1,4 +1,4 @@
-import MessageList from '@/components/message/MessageList';
+import { ReceivedMessageList } from '@/components/message/MessageList';
 import Link from 'next/link';
 
 export default function InternMessagesPage() {
@@ -13,7 +13,7 @@ export default function InternMessagesPage() {
                         </Link>
                     </div>
                     <div className="mt-6">
-                        <MessageList />
+                        <ReceivedMessageList />
                     </div>
                 </div>
             </div>
