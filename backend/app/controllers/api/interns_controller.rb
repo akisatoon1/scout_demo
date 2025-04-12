@@ -10,8 +10,7 @@ module Api
     def format_intern(intern)
       {
         id: intern.id,
-        name: intern.name,
-        profile: nil
+        name: intern.name
       }
     end
   end

@@ -56,18 +56,6 @@ export default function InternList() {
                     className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
                 >
                     <h3 className="text-xl font-semibold mb-2">{intern.name}</h3>
-                    {intern.profile && (
-                        <div className="space-y-2">
-                            <p className="text-gray-600">
-                                <span className="font-medium">大学：</span>
-                                {intern.profile.university}
-                            </p>
-                            <p className="text-gray-600">
-                                <span className="font-medium">自己紹介：</span>
-                                {intern.profile.introduction}
-                            </p>
-                        </div>
-                    )}
                 </div>
             ))}
         </div>
