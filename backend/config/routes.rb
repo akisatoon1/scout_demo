@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
     get 'profile', to: 'profile#show'
 
-    resources :messages, only: [:index, :create]
+    resources :messages, only: [:create]
     get 'messages/sent', to: 'messages#sent'
     get 'messages/received', to: 'messages#received'
 

@@ -2,17 +2,6 @@ module Api
   class MessagesController < ApplicationController
     before_action :authenticate_user!
 
-    def index
-      messages = case current_user.role
-                when 'intern'
-                  current_user.received_messages.includes(:sender)
-                when 'company'
-                  current_user.sent_messages.includes(:receiver)
-                end
-
-      render json: { messages: messages.map { |msg| format_message(msg) } }
-    end
-
     def create
       message = current_user.sent_messages.build(message_params)
       if message.save
