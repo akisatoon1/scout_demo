@@ -15,6 +15,11 @@ export default function CompanyLoginPage() {
                             新規登録はこちら
                         </Link>
                     </p>
+                    <p className="mt-2 text-center text-sm text-gray-600">
+                        <Link href="/auth/login/intern" className="font-medium text-indigo-600 hover:text-indigo-500">
+                            インターン生としてログイン
+                        </Link>
+                    </p>
                 </div>
                 <CompanyLoginForm />
             </div>
