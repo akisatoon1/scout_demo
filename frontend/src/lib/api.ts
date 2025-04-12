@@ -31,7 +31,7 @@ export interface CompanyProfile {
 export interface Intern {
     id: number;
     name: string;
-    profile: InternProfile;
+    profile: InternProfile | null;
 }
 
 export interface Message {
