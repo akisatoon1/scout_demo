@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'profile', to: 'profile#show'
 
     resources :messages, only: [:index, :show, :create]
+    get 'interns', to: 'interns#index'
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
