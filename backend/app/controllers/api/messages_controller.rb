@@ -13,11 +13,6 @@ module Api
       render json: { messages: messages.map { |msg| format_message(msg) } }
     end
 
-    def show
-      message = Message.find(params[:id])
-      render json: format_message(message)
-    end
-
     def create
       message = current_user.sent_messages.build(message_params)
       if message.save
@@ -25,6 +20,16 @@ module Api
       else
         render json: { errors: message.errors.full_messages }, status: :unprocessable_entity
       end
+    end
+
+    def sent
+      messages = current_user.sent_messages.includes(:receiver, :sender)
+      render json: { messages: messages.map { |message| format_message(message) } }
+    end
+
+    def received
+      messages = current_user.received_messages.includes(:sender, :receiver)
+      render json: { messages: messages.map { |message| format_message(message) } }
     end
 
     private
@@ -42,42 +47,19 @@ module Api
     end
 
     def format_message(message)
-      case current_user.role
-      when 'intern'
-        {
-          id: message.id,
-          content: message.content,
-          company: {
-            id: message.sender.id,
-            name: message.sender.name
-          },
-          created_at: message.created_at
-        }
-      when 'company'
-        {
-          id: message.id,
-          content: message.content,
-          intern: {
-            id: message.receiver.id,
-            name: message.receiver.name
-          },
-          created_at: message.created_at
-        }
-      else
-        {
-          id: message.id,
-          content: message.content,
-          sender: {
-            id: message.sender.id,
-            name: message.sender.name
-          },
-          receiver: {
-            id: message.receiver.id,
-            name: message.receiver.name
-          },
-          created_at: message.created_at
-        }
-      end
+      {
+        id: message.id,
+        content: message.content,
+        company: {
+          id: message.sender.id,
+          name: message.sender.name
+        },
+        intern: {
+          id: message.receiver.id,
+          name: message.receiver.name
+        },
+        created_at: message.created_at
+      }
     end
   end
 end
