@@ -37,19 +37,11 @@ export interface Message {
     id: number;
     content: string;
     created_at: string;
-    company?: {
+    company: {
         id: number;
         name: string;
     };
-    intern?: {
-        id: number;
-        name: string;
-    };
-    sender?: {
-        id: number;
-        name: string;
-    };
-    receiver?: {
+    intern: {
         id: number;
         name: string;
     };
@@ -80,8 +72,13 @@ export const profile = {
 };
 
 export const messages = {
-    list: async () => {
-        const response = await api.get<{ messages: Message[] }>('/messages');
+    list_sent: async () => {
+        const response = await api.get<{ messages: Message[] }>('/messages/sent');
+        return response.data;
+    },
+
+    list_received: async () => {
+        const response = await api.get<{ messages: Message[] }>('/messages/received');
         return response.data;
     },
 
