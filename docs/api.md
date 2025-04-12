@@ -97,10 +97,6 @@ Response:
     {
       "id": "integer",
       "name": "string",
-      "profile": {
-        "university": "string",
-        "introduction": "string"
-      }
     }
   ]
 }
