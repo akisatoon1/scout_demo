@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { auth } from '@/lib/api';
 import { useRouter } from 'next/navigation';
 
-export default function LoginForm() {
+export default function InternLoginForm() {
     const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -13,8 +13,13 @@ export default function LoginForm() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            await auth.login({ email, password });
-            router.push('/profile');
+            const response = await auth.login({ email, password });
+            // インターン生の場合のみログインを許可
+            if (response.user.role === 'intern') {
+                router.push('/intern/profile');
+            } else {
+                setError('インターン生アカウントでログインしてください');
+            }
         } catch (err) {
             setError('ログインに失敗しました');
         }
@@ -53,7 +58,7 @@ export default function LoginForm() {
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-                ログイン
+                インターン生としてログイン
             </button>
         </form>
     );
