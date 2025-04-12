@@ -167,6 +167,10 @@ Response:
         "id": "integer",
         "name": "string"
       },
+      "intern": {
+        "id": "integer",
+        "name": "string"
+      },
       "created_at": "datetime"
     }
   ]
@@ -183,6 +187,10 @@ Response:
     {
       "id": "integer",
       "content": "string",
+      "company": {
+        "id": "integer",
+        "name": "string"
+      },
       "intern": {
         "id": "integer",
         "name": "string"
