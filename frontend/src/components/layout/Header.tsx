@@ -9,7 +9,7 @@ export default function Header() {
     const handleLogout = async () => {
         try {
             await auth.logout();
-            router.push('/auth/login');
+            router.push('/auth/login/intern');
         } catch (error) {
             console.error('ログアウトに失敗しました:', error);
         }

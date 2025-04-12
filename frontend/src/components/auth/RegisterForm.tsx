@@ -15,8 +15,12 @@ export default function RegisterForm() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            await auth.register({ email, password, name, role });
-            router.push('/profile');
+            const response = await auth.register({ email, password, name, role });
+            if (role === 'intern') {
+                router.push('/intern/profile');
+            } else {
+                router.push('/company/profile');
+            }
         } catch (err) {
             setError('登録に失敗しました');
         }

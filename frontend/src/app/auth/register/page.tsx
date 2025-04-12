@@ -18,7 +18,7 @@ export default function RegisterPage() {
                             <div className="relative flex justify-center text-sm">
                                 <span className="px-2 bg-white text-gray-500">
                                     すでにアカウントをお持ちの方は
-                                    <Link href="/auth/login" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                    <Link href="/auth/login/intern" className="font-medium text-indigo-600 hover:text-indigo-500">
                                         こちら
                                     </Link>
                                 </span>
