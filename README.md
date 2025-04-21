@@ -7,4 +7,4 @@ rubyとnpmが必要
 トップレベルディレクトリで実行する  
 `./build.sh`  
 `./server.sh`  
-[http://localhost:3001/auth/login/intern]にアクセス
+[http://localhost:3001/auth/login/intern](http://localhost:3001/auth/login/intern)にアクセス
