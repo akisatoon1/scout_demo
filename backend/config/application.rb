@@ -32,6 +32,10 @@ module Backend
     # CSRFプロテクションを無効化
     config.action_controller.allow_forgery_protection = false
 
+    # パラメータラップを無効化
+    config.action_controller.wrap_parameters_by_default = false
+
+
     # 追加
     config.session_store :cookie_store, key: "_your_app_session"
     config.middleware.use ActionDispatch::Cookies
